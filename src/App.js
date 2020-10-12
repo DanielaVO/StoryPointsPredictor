@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import "semantic-ui-css/semantic.min.css";
+import { Form } from "react-bootstrap";
+import Header from "./components/Header";
+import Table from "./components/Table";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Header as="h1"></Header>
+        <hr></hr>
       </header>
+      <body>
+        <Form>
+          <Form.Group>
+            <Form.File id="dataFile" label="Select a file " />
+          </Form.Group>
+        </Form>
+        <Table className="Table"></Table>
+      </body>
     </div>
   );
 }

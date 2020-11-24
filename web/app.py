@@ -7,8 +7,9 @@ app = Flask("story_points_predictor", template_folder='templates')
 json = ""
 
 @app.route('/', methods=['GET'])
-def get():
-    return render_template('index.html', json= json)
+def get(json):
+    print(json)
+    return render_template('index.html', json=json)
 
 @app.route('/sendFile', methods=['POST'])
 def post():
@@ -19,11 +20,9 @@ def post():
     stream = io.StringIO(f.stream.read().decode("UTF8"), newline=None)
     csv_input = csv.reader(stream)
     for row in csv_input:
-        print(row)
         data.append({'title': row[0], 'description': row[1]})
-    print(data)
-    res = requests.post('https://jsonplaceholder.typicode.com/posts', json=data)
+    res = requests.post('http://localhost:5000/predict', json=data)
     json = res.json()
-    return get()
+    return get(json)
 
 app.run(port=8000, debug=True)

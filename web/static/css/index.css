@@ -1,0 +1,48 @@
+.display-flex {
+    display: flex;
+    width: 400px;
+    height: 500px;
+    margin-top: 20px;
+}
+
+.flex-1 {
+    flex: 1;
+}
+.squares-div {
+    display: flex;
+    width: 900px;
+}
+.squares-div > div > span {
+    margin-top: 8px;
+}
+.squares-div > div {
+    width: 500px;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    display: flex;
+}
+.squares-div > div > div {
+    display: flex;
+    margin: 10px;
+    border-style: solid;
+    border-width: 1px;
+    width: 22px;
+    height: 22px;
+    text-align: center;
+    font-weight: 600;
+    justify-content: center;
+    align-items: center;
+}
+.red {
+    border-color: #fd446e;
+    background-color: #ffd8e1;
+}
+.yellow {
+    border-color: #ffd878;
+    background-color: #fff5dd;
+}
+.blue {
+    border-color: #87a8da;
+    background-color: #d7ecfb;
+}

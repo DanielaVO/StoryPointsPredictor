@@ -46,3 +46,17 @@
     border-color: #87a8da;
     background-color: #d7ecfb;
 }
+
+.nav{
+    margin-bottom: 45px;
+    justify-content: center;
+}
+
+form{
+    margin-bottom: 45px;
+}
+
+table{
+    text-align: center;
+    border: solid 1px #cccc;
+}

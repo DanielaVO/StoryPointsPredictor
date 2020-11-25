@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Story points</title>
+    <title>Story points predictor</title>
     <link rel="icon" href="static/img/icon.png" />
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <meta
@@ -120,7 +120,12 @@
   </head>
   <body>
     <div class="container">
-      <h1>Story points predictor</h1>
+      <nav class="navbar navbar-light bg-light nav">
+        <a class="navbar-brand" href="#">
+          <img src="static/img/icon.png" width="40" height="40" class="d-inline-block align-top" alt="">
+          <strong>Story points predictor</strong>
+        </a>
+      </nav>
       <form
         action="/sendFile"
         class="border-class"
@@ -129,8 +134,7 @@
         enctype=multipart/form-data
       >
         <div class="form-group">
-          <label for="predictionFile">Upload</label>
-          <input type="file" class="form-control-file" name="file" id="predictionFile" />
+          <input type="file" class="form-control-file" name="file" id="predictionFile" required/>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>

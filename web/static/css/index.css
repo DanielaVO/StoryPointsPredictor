@@ -1,6 +1,23 @@
+body {
+    overflow-x: hidden;
+}
+.text-title {
+    color: rgb(37, 56, 88);
+    font-family: 'Poppins', sans-serif;
+    font-size: 25px;
+}
+.navbar-light {
+    background-color: white !important;
+    border-bottom: 1px solid #e6e6e6;
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(204,204,204,0.56);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(204,204,204,0.56);
+    box-shadow: 0px 2px 5px 0px rgba(204,204,204,0.56);
+}
+.margin-auto {
+    margin-left: auto;
+}
 .display-flex {
     display: flex;
-    width: 400px;
     height: 500px;
     margin-top: 20px;
 }
@@ -10,7 +27,6 @@
 }
 .squares-div {
     display: flex;
-    width: 900px;
 }
 .squares-div > div > span {
     margin-top: 8px;
@@ -56,7 +72,24 @@ form{
     margin-bottom: 45px;
 }
 
-table{
+table {
     text-align: center;
     border: solid 1px #cccc;
+}
+.about-button {
+    background-image: url("./acerca-de.png");
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    background-position: 5px;
+    height: 40px;
+    width: 40px;
+    border: 0px;
+    background-color: white;
+    border-radius: 20px;
+}
+.about-button:hover {
+    background-color: rgba(0, 82, 204, 0.267);
+}
+.container {
+    max-width: 80% !important;
 }

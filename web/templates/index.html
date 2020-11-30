@@ -5,6 +5,8 @@
     <title>Story points predictor</title>
     <link rel="icon" href="static/img/icon.png" />
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
@@ -119,13 +121,17 @@
     </script>
   </head>
   <body>
-    <div class="container">
-      <nav class="navbar navbar-light bg-light nav">
-        <a class="navbar-brand" href="#">
-          <img src="static/img/icon.png" width="40" height="40" class="d-inline-block align-top" alt="">
-          <strong>Story points predictor</strong>
-        </a>
-      </nav>
+    <nav style="display: flex;" class="navbar navbar-light bg-light nav">
+      <a class="margin-auto navbar-brand" href="#">
+        <img src="static/img/icon.png" width="40" height="40" class="d-inline-block align-top" alt="">
+        <strong class="text-title">Story points predictor</strong>
+      </a>
+      <div class="margin-auto">
+        <button class="about-button"></button>
+      </div>
+    </nav>
+ <div class="container">
+
       <form
         action="/sendFile"
         class="border-class"
@@ -152,14 +158,16 @@
       <div>
         <h3>Graphs</h3>
         <div class="squares-div">
-          <div><div class="red">S</div><span><strong>Small</strong> User Story</span></div>
-          <div><div class="blue">M</div><span><strong>Medium</strong> User Story</span></div>
-          <div><div class="yellow">L</div><span><strong>Large</strong> User Story</span></div>
+          <div class="flex-1"><div class="red">S</div><span><strong>Small</strong> User Story</span></div>
+          <div class="flex-1"><div class="blue">M</div><span><strong>Medium</strong> User Story</span></div>
+          <div class="flex-1"><div class="yellow">L</div><span><strong>Large</strong> User Story</span></div>
         </div>
         <div class="display-flex">
+          <div class="flex-1">
           <canvas class="flex-1" id="myChart" width="100" height="100"></canvas>
-          <canvas class="flex-1" id="secondChart" width="100" height="100"></canvas>
-          <canvas class="flex-1" id="thirdChart" width="100" height="100"></canvas>
+          </div>  
+          <div class="flex-1"><canvas class="flex-1" id="secondChart" width="100" height="100"></canvas></div>
+          <div class="flex-1"><canvas class="flex-1" id="thirdChart" width="100" height="100"></canvas></div>
         </div>
       </div>
     </div>

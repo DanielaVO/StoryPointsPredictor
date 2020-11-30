@@ -7,9 +7,8 @@ app = Flask("story_points_predictor", template_folder='templates')
 json = ""
 
 @app.route('/', methods=['GET'])
-def get(json):
-    print(json)
-    return render_template('index.html', json=json)
+def get():
+    return render_template('index.html')
 
 @app.route('/sendFile', methods=['POST'])
 def post():
@@ -23,6 +22,6 @@ def post():
         data.append({'title': row[0], 'description': row[1]})
     res = requests.post('http://localhost:5000/predict', json=data)
     json = res.json()
-    return get(json)
+    return render_template('index.html', json=json)
 
 app.run(port=8000, debug=True)

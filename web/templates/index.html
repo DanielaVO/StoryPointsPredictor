@@ -32,7 +32,6 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    <link href="static/css/index.css" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css"
@@ -46,6 +45,7 @@
     type="text/javascript"
     src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
     ></script>
+    <link href="static/css/index.css" rel="stylesheet"/>
 
     <script>
       $(document).ready(function () {
@@ -122,12 +122,12 @@
   </head>
   <body>
     <nav style="display: flex;" class="navbar navbar-light bg-light nav">
-      <a class="margin-auto navbar-brand" href="#">
-        <img src="static/img/icon.png" width="40" height="40" class="d-inline-block align-top" alt="">
+      <a class="margin-auto navbar-brand">
+        <img src="static/img/icon.png" width="40" height="40" class="d-inline-block align-top">
         <strong class="text-title">Story points predictor</strong>
       </a>
       <div class="margin-auto">
-        <button class="about-button"></button>
+        <button type="button" data-toggle="modal" data-target="#exampleModal" class="about-button"></button>
       </div>
     </nav>
  <div class="container">
@@ -142,7 +142,7 @@
         <div class="form-group">
           <input type="file" class="form-control-file" name="file" id="predictionFile" required/>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary btnSubmit">Submit</button>
       </form>
       <div class="list-group">
         <table id="predictionsTable" class="display">
@@ -172,4 +172,30 @@
       </div>
     </div>
   </body>
+
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">About</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style="text-align: center">Project developed by</p> 
+        <div class="container-img">
+          <div class= "logos-img"><img src="static/img/udem.png"></div>
+          <div class= "logos-img"><img src="static/img/arkadius.png"></div>
+          <div class= "logos-img"><img src="static/img/Gessi.png"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </html>

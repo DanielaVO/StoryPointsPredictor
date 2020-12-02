@@ -21,7 +21,6 @@ body {
     height: 500px;
     margin-top: 20px;
 }
-
 .flex-1 {
     flex: 1;
 }
@@ -71,13 +70,33 @@ body {
 form{
     margin-bottom: 45px;
 }
-
+.btnSubmit{
+    background: rgb(0, 82, 204);
+}
 table {
     text-align: center;
-    border: solid 1px #cccc;
+    border-collapse: separate;
+    border: solid #ccc7c7 1px;
+    border-radius: 6px;
+    border-bottom: 1px solid #cccc !important;
 }
+th{
+    color: rgb(94, 108, 132);
+}
+.container-img{
+    display: flex;
+}
+.logos-img{
+    align-self: center;
+}
+.container-img img {
+    height: auto;
+    width: 100%;
+    padding: 5px;
+}
+.container-img .logos-img {width: 55%; max-width: 345px;}
 .about-button {
-    background-image: url("./acerca-de.png");
+    background-image: url("../img//acerca-de.png");
     background-repeat: no-repeat;
     background-size: 30px 30px;
     background-position: 5px;
@@ -92,4 +111,8 @@ table {
 }
 .container {
     max-width: 80% !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: white;
+    border: none;
 }

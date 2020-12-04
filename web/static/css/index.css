@@ -6,6 +6,10 @@ body {
     font-family: 'Poppins', sans-serif;
     font-size: 25px;
 }
+p.text-title{
+    font-size: 20px;
+    color: black;
+}
 .navbar-light {
     background-color: white !important;
     border-bottom: 1px solid #e6e6e6;
@@ -16,13 +20,26 @@ body {
 .margin-auto {
     margin-left: auto;
 }
+.flex-disp {
+    display: flex;
+}
 .display-flex {
     display: flex;
     height: 500px;
     margin-top: 20px;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 .flex-1 {
     flex: 1;
+}
+.chart-box {
+    width: 500px;
+    height: 500px;
+}
+.combo-margin {
+    margin-top: 5px;
+    margin-left: 20px;
 }
 .squares-div {
     display: flex;
@@ -37,7 +54,8 @@ body {
     align-content: center;
     display: flex;
 }
-.squares-div > div > div {
+.box {
+    margin: auto;
     display: flex;
     margin: 10px;
     border-style: solid;
@@ -68,7 +86,7 @@ body {
 }
 
 form{
-    margin-bottom: 45px;
+    margin: 15px;
 }
 .btnSubmit{
     background: rgb(0, 82, 204);
@@ -115,4 +133,7 @@ th{
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
     background: white;
     border: none;
+}
+.hidden {
+    display: none;
 }

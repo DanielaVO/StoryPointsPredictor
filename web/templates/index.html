@@ -53,7 +53,6 @@
         json = JSON.parse(json)
         var counts = {};
         json.forEach(function(x) { counts[x.prediction] = (counts[x.prediction] || 0)+1; });
-        console.log(counts)
         var ctx = $('#myChart');
         var secondChart = $('#secondChart');
         var thirdChart = $('#thirdChart');
@@ -109,13 +108,37 @@
           columns: [
             { data: "title" },
             { data: "description" },
-            { data: "prediction" },
+            { data: "prediction",
+              "render": function (data, type, JsonResultRow, meta) {
+                  console.log(data)
+                  let classes = "box ";
+                  switch(data){
+                    case "S":
+                      classes += "red";
+                      break;
+                    case "M": 
+                      classes += "blue"
+                      break;
+                    case "L":
+                      classes += "yellow"
+                      break;
+                  }
+                  return `<div class="${classes}" style="margin: auto;">${data}</div>`;
+                }
+            },
           ],
           buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
           ],
           order: [0, "desc"],
           data: json,
+        });
+
+        $("#select").change(function() {
+
+          $(".charts").hide();
+          $(`#${this.value}`).show();
+          //alert( "Handler for .change() called." + this.value );
         });
       });
     </script>
@@ -131,7 +154,14 @@
       </div>
     </nav>
  <div class="container">
-
+      <p class="text-title">Upload a csv file with two columns, one for the name and one for the title.
+      Click the submit button and then you'll get a classification based on the following categories:</p>
+      <div class="squares-div">
+        <div class="flex-1"><div class="box red">S</div><span><strong>Small</strong> User Story</span></div>
+        <div class="flex-1"><div class="box blue">M</div><span><strong>Medium</strong> User Story</span></div>
+        <div class="flex-1"><div class="box yellow">L</div><span><strong>Large</strong> User Story</span></div>
+      </div>
+      <hr>
       <form
         action="/sendFile"
         class="border-class"
@@ -144,6 +174,7 @@
         </div>
         <button type="submit" class="btn btn-primary btnSubmit">Submit</button>
       </form>
+      <hr>
       <div class="list-group">
         <table id="predictionsTable" class="display">
           <thead>
@@ -156,46 +187,48 @@
         </table>
       </div>
       <div>
-        <h3>Graphs</h3>
-        <div class="squares-div">
-          <div class="flex-1"><div class="red">S</div><span><strong>Small</strong> User Story</span></div>
-          <div class="flex-1"><div class="blue">M</div><span><strong>Medium</strong> User Story</span></div>
-          <div class="flex-1"><div class="yellow">L</div><span><strong>Large</strong> User Story</span></div>
+        <div class="flex-disp">
+          <h3 class="text-title">Charts</h3>
+          <div class="combo-margin">
+            <select id="select" name="charts">
+              <option value="Box">Bar Chart</option>
+              <option value="Pie">Pie Chart</option>
+              <option value="Polar">Polar area Chart</option>
+            </select>
+          </div>
         </div>
-        <div class="display-flex">
-          <div class="flex-1">
-          <canvas class="flex-1" id="myChart" width="100" height="100"></canvas>
-          </div>  
-          <div class="flex-1"><canvas class="flex-1" id="secondChart" width="100" height="100"></canvas></div>
-          <div class="flex-1"><canvas class="flex-1" id="thirdChart" width="100" height="100"></canvas></div>
+        <div>
+          <div class="display-flex">
+            <div id="Box" class="chart-box charts"><canvas class="chart-box" id="myChart" width="100" height="100"></canvas></div>  
+            <div id="Pie" class="hidden chart-box charts"><canvas class="flex-1" id="secondChart" width="100" height="100"></canvas></div>
+            <div id="Polar" class="hidden chart-box charts"><canvas class="flex-1" id="thirdChart" width="100" height="100"></canvas></div>
+          </div>
         </div>
       </div>
     </div>
   </body>
-
   <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">About</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p style="text-align: center">Project developed by</p> 
-        <div class="container-img">
-          <div class= "logos-img"><img src="static/img/udem.png"></div>
-          <div class= "logos-img"><img src="static/img/arkadius.png"></div>
-          <div class= "logos-img"><img src="static/img/Gessi.png"></div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">About</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <div class="modal-body">
+          <p style="text-align: center">Project developed by</p> 
+          <div class="container-img">
+            <div class= "logos-img"><img src="static/img/udem.png"></div>
+            <div class= "logos-img"><img src="static/img/arkadius.png"></div>
+            <div class= "logos-img"><img src="static/img/Gessi.png"></div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
 </html>

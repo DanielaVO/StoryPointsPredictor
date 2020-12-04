@@ -23,5 +23,4 @@ def post():
     res = requests.post('http://localhost:5000/predict', json=data)
     json = res.json()
     return render_template('index.html', json=json)
-
-app.run(port=8000, debug=True)
+    

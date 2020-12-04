@@ -8,10 +8,14 @@ from flask import Flask, flash, jsonify, request, redirect, render_template, url
 from werkzeug.utils import secure_filename
 import re
 import fasttext
+from flask_cors import CORS
+import csv
+import io
 
 app = Flask(__name__)
 file_name = "classifier.bin"
 model = fasttext.load_model(file_name)
+CORS(app)
 
 def concatenate_test(stories_list):
     full_stories = []
@@ -46,7 +50,15 @@ def get_text(stories, prediction):
 
 @app.route('/predict', methods=["POST"])
 def get_predictions():
-    json = request.get_json()
+    f = request.files['file']
+    data = []
+    if not f:
+        return "No file"
+    stream = io.StringIO(f.stream.read().decode("UTF8"), newline=None)
+    csv_input = csv.reader(stream)
+    for row in csv_input:
+        data.append({'title': row[0], 'description': row[1]})
+    json = data
     full_stories = concatenate_test(json)
     prediction = predict(full_stories)
     story_points = get_label(prediction)
